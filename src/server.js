@@ -20,7 +20,7 @@ server.bindAsync(
 server.addService(todoPackage.Todo.service, {
     "createTodo": createTodo,
     "readTodos": readTodos,
-
+    "readTodosStream": readTodosStream
 });
 
 
@@ -38,3 +38,7 @@ function readTodos (call, callback) {
     callback(null, {"items": todos})
 }
 
+function readTodosStream (call, callback) {
+    todos.forEach(t => call.write(t))
+    call.end();
+}
