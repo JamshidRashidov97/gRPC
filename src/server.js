@@ -6,11 +6,6 @@ const grpcObject = grpc.loadPackageDefinition(packageDefinition)
 const todoPackage = grpcObject.todoPackage;
 
 const server = new grpc.Server();
-server.addService(todoPackage.Todo.service, {
-    "createTodo": createTodo(),
-    "readTodos": readTodos()
-});
-
 server.bindAsync(
     "0.0.0.0:40000",
     grpc.ServerCredentials.createInsecure(),
@@ -22,14 +17,24 @@ server.bindAsync(
     }
 })
 
+server.addService(todoPackage.Todo.service, {
+    "createTodo": createTodo,
+    "readTodos": readTodos,
+
+});
 
 
+const todos = []
 function createTodo (call, callback) {
-    console.log(call);
-    // callback(null, {});
+    const todoItem = {
+        "id": todos.length + 1,
+        "text": call.request.text
+    }
+    todos.push(todoItem)
+    callback(null, todoItem)
 }
 
 function readTodos (call, callback) {
-    // callback(null, { items: [] });
+    callback(null, {"items": todos})
 }
 
