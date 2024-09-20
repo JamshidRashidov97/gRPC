@@ -3,12 +3,10 @@ syntax = "proto3";
 package todoPackage;
 
 service Todo {
-
   rpc createTodo ( TodoItem ) returns ( TodoItem );
   rpc readTodos ( voidNoParams ) returns ( TodoItems );
   rpc readTodosStream ( voidNoParams ) returns ( stream TodoItem );
 }
-
 
 message voidNoParams {}
 message TodoItem {

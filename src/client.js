@@ -14,11 +14,11 @@ client.createTodo({
     "id": -1,
     "text": text,
 }, (error, response) => {
-    // if (!error) {
-    // console.log("Received from the server: " + JSON.stringify(response));
-    // } else {
-    //     console.error(error);
-    // }
+    if (!error) {
+    console.log("Received from the server: " + JSON.stringify(response));
+    } else {
+        console.error(error);
+    }
 })
 
 client.readTodos(null, (error, response) => {
