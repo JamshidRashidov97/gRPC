@@ -6,7 +6,7 @@ const grpcObject = grpc.loadPackageDefinition(packageDefinition)
 const todoPackage = grpcObject.todoPackage;
 
 const text = process.argv[2];
-const client = new todoPackage.Todo("localhost:40000",
+const client = new todoPackage.Todo("localhost:7777",
     grpc.credentials.createInsecure()
 );
 

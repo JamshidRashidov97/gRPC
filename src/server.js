@@ -7,7 +7,7 @@ const todoPackage = grpcObject.todoPackage;
 
 const server = new grpc.Server();
 server.bindAsync(
-    "0.0.0.0:40000",
+    "0.0.0.0:7777",
     grpc.ServerCredentials.createInsecure(),
     (error, port) => {
     if (error) {
